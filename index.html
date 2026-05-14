@@ -2,45 +2,129 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CEO Dashboard — Inspira × Ansaka</title>
-  <meta http-equiv="refresh" content="0;url=https://script.google.com/macros/s/AKfycbxzn6luTXG9clKwGi4Te7IEvi_Ocp-SaFFezP8WdIYLmD0AOO3bSKge2Jt93tZ2ifp58w/exec?page=dashboard">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#0F1D4A">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Inspira Dashboard">
+  <meta name="description" content="CEO Dashboard — Mitologi Inspira × Ansaka">
+
+  <title>Inspira Dashboard</title>
+
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icons/icon-512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #0A0F1E;
-      color: #F4F4F5;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #0F1D4A;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #splash {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(160deg, #0F1D4A 0%, #1A2E5A 100%);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      flex-direction: column;
-      gap: 12px;
+      z-index: 100;
+      transition: opacity 0.5s ease;
     }
-    .spinner {
-      width: 32px; height: 32px;
-      border: 3px solid rgba(255,255,255,0.1);
-      border-top-color: #1A5FC8;
+    #splash.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #splash-logo {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 24px;
+    }
+    #splash-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    #splash-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    #splash-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 52px;
+      letter-spacing: 0.3px;
+    }
+    #splash-spinner {
+      width: 28px;
+      height: 28px;
+      border: 2.5px solid rgba(255,255,255,0.15);
+      border-top-color: #F97316;
       border-radius: 50%;
-      animation: spin 0.7s linear infinite;
+      animation: spin 0.75s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    p { font-size: 13px; color: rgba(244,244,245,0.45); }
-    a { color: #1A5FC8; font-size: 12px; }
+
+    #app-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
   </style>
 </head>
 <body>
-  <div class="spinner"></div>
-  <p>Membuka CEO Dashboard...</p>
-  <a href="https://script.google.com/macros/s/AKfycbxzn6luTXG9clKwGi4Te7IEvi_Ocp-SaFFezP8WdIYLmD0AOO3bSKge2Jt93tZ2ifp58w/exec?page=dashboard">
-    Klik di sini jika tidak otomatis redirect
-  </a>
+
+  <div id="splash">
+    <div id="splash-logo">
+      <img src="icons/icon-192.png" alt="Inspira">
+    </div>
+    <div id="splash-title">Inspira × Ansaka</div>
+    <div id="splash-sub">CEO Dashboard</div>
+    <div id="splash-spinner"></div>
+  </div>
+
+  <iframe
+    id="app-frame"
+    src="https://script.google.com/macros/s/DEPLOYMENT_ID/exec?page=dashboard"
+    allow="fullscreen"
+    loading="eager"
+  ></iframe>
+
   <script>
-    window.location.replace(
-      "https://script.google.com/macros/s/AKfycbxzn6luTXG9clKwGi4Te7IEvi_Ocp-SaFFezP8WdIYLmD0AOO3bSKge2Jt93tZ2ifp58w/exec?page=dashboard"
-    );
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('sw.js');
+      });
+    }
+
+    var frame  = document.getElementById('app-frame');
+    var splash = document.getElementById('splash');
+
+    frame.addEventListener('load', function() {
+      setTimeout(function() {
+        splash.classList.add('hidden');
+      }, 800);
+    });
+
+    setTimeout(function() {
+      splash.classList.add('hidden');
+    }, 6000);
   </script>
+
 </body>
 </html>
-
