@@ -2,7 +2,7 @@
 // Minimal SW untuk PWA installability
 // Tidak cache konten Apps Script — selalu real-time dari Google Sheets
 
-const CACHE_NAME = 'inspira-dashboard-v1';
+const CACHE_NAME = 'inspira-dashboard-v2';
 
 const SHELL_FILES = [
   '/',
