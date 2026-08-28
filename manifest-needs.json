@@ -1,7 +1,7 @@
 {
-  "name": "Client OS — Mitologi Inspira",
-  "short_name": "Client OS",
-  "start_url": "index.html",
+  "name": "Form Kebutuhan — Mitologi Inspira",
+  "short_name": "Form Kebutuhan",
+  "start_url": "needs.html",
   "scope": ".",
   "display": "standalone",
   "orientation": "portrait",
