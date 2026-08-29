@@ -1,13 +1,14 @@
 // Client OS — service worker
 // Naikkan angka versi setiap kali file di repo ini diubah.
-const CACHE_NAME = 'inspira-clientos-v3';
+const CACHE_NAME = 'inspira-dashboard-v4';
 const SHELL = [
   'index.html',
   'needs.html',
   'manifest.json',
   'manifest-needs.json',
   'icons/icon-192.png',
-  'icons/icon-512.png'
+  'icons/icon-512.png',
+  'icons/apple-touch-icon.png'
 ];
 
 self.addEventListener('install', function (e) {
