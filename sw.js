@@ -1,6 +1,6 @@
 // Client OS — service worker
 // Naikkan angka versi setiap kali file di repo ini diubah.
-const CACHE_NAME = 'inspira-dashboard-v4';
+const CACHE_NAME = 'client-os-inspira-v5';
 const SHELL = [
   'index.html',
   'needs.html',
