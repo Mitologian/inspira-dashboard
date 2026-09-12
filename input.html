@@ -126,5 +126,40 @@
     }, 6000);
   </script>
 
+
+  <script>
+  /* inspira-form-track: pelacakan Form Kebutuhan di GA4 (dilihat / mulai diisi / terkirim).
+     Halaman form (Apps Script) mengirim pesan ke halaman ini setelah data terkirim,
+     karena iframe Google tidak bisa mengirim event ke GA4 sendiri. */
+  (function(){
+    var GA = 'G-8P8G0DWFRV';
+    var s = document.createElement('script'); s.async = 1;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', GA, { send_page_view: false });
+    function iTrack(n, p){ try{ gtag('event', n, p || {}); }catch(e){} }
+
+    iTrack('brief_form_view', { form: 'Form Kebutuhan', halaman: location.pathname });
+
+    window.addEventListener('message', function(ev){
+      var d = ev && ev.data;
+      if (!d || typeof d !== 'object' || !d.inspira) return;
+      var p = d.data || {};
+      if (d.inspira === 'brief_form_start') iTrack('brief_form_start', { form: 'Form Kebutuhan' });
+      if (d.inspira === 'brief_form_submit') {
+        iTrack('brief_form_submit', {
+          form: 'Form Kebutuhan',
+          industri: p.industri || '', karyawan: p.karyawan || '',
+          peserta: p.peserta || '', kota: p.kota || '',
+          budget: p.budget || '', fase: p.fase || ''
+        });
+      }
+    });
+  })();
+  </script>
+
 </body>
 </html>
