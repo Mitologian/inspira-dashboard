@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnosa Tim mandiri — Mitologi Inspira</title>
+<meta name="description" content="Sepuluh pernyataan, tiga menit, tanpa biaya. Dapatkan rapor singkat tentang lima fondasi kerja tim, lalu satu langkah berikutnya.">
+<style>
+  :root {
+    --navy: #0F1D4A; --navy-2: #17285E; --emas: #C9A44C; --tinta: #16203C;
+    --abu: #6B7488; --garis: #E2E6EF; --putih: #FFFFFF; --latar: #F6F7FB;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--latar); color: var(--tinta); line-height: 1.55;
+    -webkit-text-size-adjust: 100%;
+  }
+  .bungkus { max-width: 620px; margin: 0 auto; padding: 20px 18px 48px; }
+  .kepala { background: var(--navy); color: #fff; padding: 22px 18px 20px; }
+  .kepala .isi { max-width: 620px; margin: 0 auto; }
+  .merek { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #C9A44C; margin: 0 0 6px; }
+  h1 { font-size: 24px; line-height: 1.25; margin: 0; font-weight: 650; }
+  .kepala p { margin: 10px 0 0; color: #C7CEE3; font-size: 14.5px; }
+  .jalur { height: 4px; background: #24356B; }
+  .jalur > i { display: block; height: 100%; width: 0; background: var(--emas); transition: width .25s ease; }
+  .kartu { background: var(--putih); border: 1px solid var(--garis); border-radius: 14px; padding: 20px; margin-top: 18px; }
+  .kartu h2 { font-size: 18px; margin: 0 0 10px; }
+  .kartu p { margin: 0 0 12px; font-size: 15px; }
+  .kartu p.kecil { font-size: 13.5px; color: var(--abu); }
+  ul.ringkas { margin: 0 0 6px; padding-left: 20px; font-size: 15px; }
+  ul.ringkas li { margin-bottom: 6px; }
+  .tombol {
+    display: block; width: 100%; border: 0; border-radius: 11px; padding: 15px 18px;
+    font-size: 16px; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none;
+  }
+  .tombol-utama { background: var(--navy); color: #fff; }
+  .tombol-utama:active { background: var(--navy-2); }
+  .tombol-wa { background: #1F9D6B; color: #fff; }
+  .tombol-samar { background: transparent; color: var(--abu); border: 1px solid var(--garis); font-weight: 500; font-size: 14.5px; padding: 12px; }
+  .tombol[disabled] { opacity: .45; cursor: not-allowed; }
+  .sebelah { display: flex; gap: 10px; margin-top: 14px; }
+  .sebelah .tombol { margin: 0; }
+  .hitung { font-size: 13px; color: var(--abu); margin: 0 0 10px; }
+  .pernyataan { font-size: 19px; line-height: 1.4; margin: 0 0 18px; font-weight: 600; }
+  .pilihan { display: grid; gap: 9px; }
+  .pilihan button {
+    text-align: left; border: 1px solid var(--garis); background: #fff; border-radius: 11px;
+    padding: 13px 15px; font-size: 15px; cursor: pointer; color: var(--tinta); font-family: inherit;
+  }
+  .pilihan button span { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center;
+    border-radius: 50%; background: #EEF1F8; color: var(--navy); font-size: 12.5px; font-weight: 700; margin-right: 9px; }
+  .pilihan button.dipilih { border-color: var(--navy); background: #F1F4FC; }
+  .pilihan button.dipilih span { background: var(--navy); color: #fff; }
+  label { display: block; font-size: 14px; font-weight: 600; margin: 0 0 6px; }
+  input {
+    width: 100%; border: 1px solid var(--garis); border-radius: 10px; padding: 13px 14px;
+    font-size: 16px; font-family: inherit; color: var(--tinta); background: #fff;
+  }
+  input:focus { outline: 2px solid #C9D3EE; border-color: var(--navy); }
+  .bidang { margin-bottom: 14px; }
+  .nilai { font-size: 54px; font-weight: 700; line-height: 1; margin: 0; }
+  .dari { font-size: 15px; color: var(--abu); margin: 6px 0 0; }
+  .pita { display: inline-block; padding: 5px 12px; border-radius: 999px; color: #fff; font-size: 13.5px; font-weight: 600; margin-top: 12px; }
+  .baris { margin-top: 18px; }
+  .baris .atas { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 5px; }
+  .baris .atas b { font-weight: 650; }
+  .bar { height: 9px; border-radius: 999px; background: #EDF0F7; overflow: hidden; }
+  .bar i { display: block; height: 100%; border-radius: 999px; }
+  .temuan { border-left: 3px solid var(--emas); padding: 2px 0 2px 14px; margin: 18px 0; }
+  .temuan h3 { font-size: 16px; margin: 0 0 6px; }
+  .temuan p { font-size: 14.5px; margin: 0 0 8px; }
+  .temuan .butir { font-size: 13.5px; color: var(--abu); font-style: italic; }
+  .temuan .tindakan { font-size: 14.5px; background: #F6F7FB; border-radius: 9px; padding: 11px 13px; margin: 8px 0 0; }
+  .catatan { background: #FFF8E8; border: 1px solid #F0E0BC; border-radius: 10px; padding: 12px 14px; font-size: 14px; margin-top: 16px; }
+  .kaki { text-align: center; font-size: 12.5px; color: var(--abu); margin-top: 22px; }
+  .sembunyi { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="kepala">
+  <div class="isi">
+    <p class="merek">Mitologi Inspira</p>
+    <h1>Diagnosa Tim mandiri</h1>
+    <p id="kepalaKet">Sepuluh pernyataan tentang cara tim bekerja. Tiga menit, tanpa biaya, hasilnya langsung.</p>
+  </div>
+</div>
+<div class="jalur"><i id="jalurIsi"></i></div>
+
+<div class="bungkus">
+
+  <!-- Layar 1: pembuka -->
+  <section id="layarBuka" class="kartu">
+    <h2>Sebelum mulai</h2>
+    <ul class="ringkas">
+      <li>Sepuluh pernyataan, dinilai 1 sampai 5 sesuai keadaan tim saat ini.</li>
+      <li>Jawaban paling jujur memberi hasil paling berguna. Tidak ada jawaban benar atau salah.</li>
+      <li>Rapor berisi skor lima fondasi kerja tim, dua hal yang paling menghambat, dan satu langkah berikutnya.</li>
+      <li>Datang dari satu orang saja sudah cukup untuk melihat pola. Lebih dari satu orang memberi gambaran yang lebih tajam.</li>
+    </ul>
+    <p class="kecil">Jawaban tidak ditampilkan ke anggota tim dan tidak dipakai untuk menilai siapa pun.</p>
+    <button class="tombol tombol-utama" id="btnMulai">Mulai, sekitar 3 menit</button>
+  </section>
+
+  <!-- Layar 2: pernyataan -->
+  <section id="layarTanya" class="kartu sembunyi">
+    <p class="hitung" id="penghitung">Pernyataan 1 dari 10</p>
+    <p class="pernyataan" id="teksPernyataan"></p>
+    <div class="pilihan" id="pilihan"></div>
+    <div class="sebelah">
+      <button class="tombol tombol-samar" id="btnKembali">Kembali</button>
+    </div>
+  </section>
+
+  <!-- Layar 3: gerbang data, muncul setelah pernyataan keenam -->
+  <section id="layarData" class="kartu sembunyi">
+    <h2>Hampir selesai</h2>
+    <p>Rapornya sudah dihitung. Isi empat hal ini supaya hasilnya bisa dibahas dan dikirim.</p>
+    <div class="bidang"><label for="fNama">Nama</label><input id="fNama" type="text" autocomplete="name" placeholder="Nama panggilan"></div>
+    <div class="bidang"><label for="fWa">Nomor WhatsApp</label><input id="fWa" type="tel" inputmode="tel" autocomplete="tel" placeholder="08xx xxxx xxxx"></div>
+    <div class="bidang"><label for="fPerusahaan">Perusahaan atau lembaga</label><input id="fPerusahaan" type="text" autocomplete="organization" placeholder="Nama perusahaan"></div>
+    <div class="bidang"><label for="fJumlah">Perkiraan jumlah anggota tim</label><input id="fJumlah" type="text" inputmode="numeric" placeholder="misal 25"></div>
+    <p class="kecil" id="pesanData">Data hanya dipakai untuk membahas hasil tim ini. Tidak dibagikan ke pihak lain.</p>
+    <button class="tombol tombol-utama" id="btnLanjutData">Lanjut ke dua pernyataan terakhir</button>
+  </section>
+
+  <!-- Layar 4: rapor -->
+  <section id="layarHasil" class="kartu sembunyi">
+    <p class="hitung">Rapor diagnosa tim</p>
+    <p class="nilai" id="skorTotal">0</p>
+    <p class="dari">dari 100</p>
+    <div class="pita" id="pitaSkor">—</div>
+    <p id="artiPita" style="margin-top:12px"></p>
+    <div id="daftarDimensi"></div>
+    <div id="daftarTemuan"></div>
+    <div id="catatanSeragam" class="catatan sembunyi"></div>
+    <h2 style="margin-top:22px">Langkah berikutnya</h2>
+    <p>Sesi 45 menit tanpa biaya untuk membahas rapor ini bersama satu fasilitator kami. Yang dibahas bukan penilaian, melainkan dua penghambat yang muncul di rapor dan cara menanganinya.</p>
+    <button class="tombol tombol-wa" id="btnWa">Bahas hasil ini lewat WhatsApp</button>
+    <button class="tombol tombol-samar" id="btnSalin" style="margin-top:10px">Salin ringkasan hasil</button>
+    <div class="sebelah">
+      <button class="tombol tombol-samar" id="btnUlang">Mulai dari awal</button>
+    </div>
+    <p class="kecil" id="pesanKirim" style="margin-top:14px"></p>
+  </section>
+
+  <p class="kaki">Mitologi Inspira · konsultan pengembangan tim dan pengalaman belajar</p>
+</div>
+
+<script src="mesin.js"></script>
+<script>
+/* ============================================================================
+   Diagnosa Tim mandiri — tampilan dan pelacakan
+   Angka yang perlu diubah ada di SATU tempat, yaitu objek KONFIG di bawah.
+   ============================================================================ */
+var KONFIG = {
+  nomorWa: "6282126373601",              // nomor kantor, tujuan tombol ajakan
+  idGa4: "G-8P8G0DWFRV",                 // properti GA4 Mitologi Inspira
+  endpointKirim: "",                     // diisi setelah Apps Script terpasang
+  ambilDataSetelah: 6,                   // gerbang data muncul setelah pernyataan ke-6
+  kirimKeAnalytics: true                 // ?uji=1 mematikannya
+};
+
+var PETA = { 1: "Tidak sesuai", 2: "Kurang sesuai", 3: "Cukup sesuai", 4: "Sesuai", 5: "Sangat sesuai" };
+var KUNCI_SIMPAN = "inspira-diagnosa-tim";
+
+var keadaan = { jawaban: [], indeks: 0, data: {}, selesai: false };
+var uji = /(\?|&)uji=1/.test(location.search);
+if (uji) KONFIG.kirimKeAnalytics = false;
+
+/* ---------- pelacakan: langsung ke endpoint GA4, karena gtag di situs dipegang GTM ---------- */
+function idKlien() {
+  var k = "inspira-cid";
+  try {
+    var ada = localStorage.getItem(k);
+    if (!ada) { ada = String(Math.floor(Math.random() * 1e10)) + "." + Date.now(); localStorage.setItem(k, ada); }
+    return ada;
+  } catch (e) { return String(Date.now()); }
+}
+function lacak(nama, param) {
+  var isi = Object.assign({}, param || {});
+  if (KONFIG.kirimKeAnalytics && KONFIG.idGa4) {
+    try {
+      var q = ["v=2", "tid=" + KONFIG.idGa4, "cid=" + idKlien(), "en=" + encodeURIComponent(nama)];
+      Object.keys(isi).forEach(function (k) { q.push("ep." + encodeURIComponent(k) + "=" + encodeURIComponent(isi[k])); });
+      var alamat = "https://www.google-analytics.com/g/collect?" + q.join("&");
+      if (navigator.sendBeacon) navigator.sendBeacon(alamat);
+      else fetch(alamat, { method: "POST", keepalive: true, mode: "no-cors" });
+    } catch (e) {}
+  }
+  try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: nama }, isi)); } catch (e) {}
+}
+
+/* ---------- simpan dan pulihkan ---------- */
+function simpan() {
+  try { localStorage.setItem(KUNCI_SIMPAN, JSON.stringify(keadaan)); } catch (e) {}
+}
+function pulihkan() {
+  try {
+    var t = localStorage.getItem(KUNCI_SIMPAN);
+    if (t) { var d = JSON.parse(t); if (d && Array.isArray(d.jawaban)) keadaan = d; }
+  } catch (e) {}
+}
+
+/* ---------- tampilan ---------- */
+function el(id) { return document.getElementById(id); }
+function tampilkan(id) {
+  ["layarBuka", "layarTanya", "layarData", "layarHasil"].forEach(function (x) {
+    el(x).classList.toggle("sembunyi", x !== id);
+  });
+  window.scrollTo(0, 0);
+}
+function gambarJalur() {
+  var maju = keadaan.selesai ? 1 : Math.min(keadaan.jawaban.length / MESIN.PERNYATAAN.length, 0.95);
+  el("jalurIsi").style.width = Math.round(maju * 100) + "%";
+}
+
+var MESIN = window.MESIN || { /* diisi oleh mesin.js */ };
+
+function gambarPernyataan() {
+  var i = keadaan.indeks, b = MESIN.PERNYATAAN[i];
+  el("penghitung").textContent = "Pernyataan " + (i + 1) + " dari " + MESIN.PERNYATAAN.length;
+  el("teksPernyataan").textContent = b.teks;
+  var kotak = el("pilihan"); kotak.innerHTML = "";
+  for (var n = 1; n <= 5; n++) {
+    (function (angka) {
+      var t = document.createElement("button");
+      t.type = "button";
+      t.innerHTML = "<span>" + angka + "</span>" + PETA[angka];
+      if (keadaan.jawaban[i] === angka) t.className = "dipilih";
+      t.onclick = function () { pilih(angka); };
+      kotak.appendChild(t);
+    })(n);
+  }
+  el("btnKembali").style.visibility = (i === 0 && keadaan.jawaban.length === 0) ? "hidden" : "visible";
+  gambarJalur();
+}
+
+function pilih(angka) {
+  keadaan.jawaban[keadaan.indeks] = angka;
+  simpan();
+  if (keadaan.jawaban.filter(function (x) { return x; }).length === 1) lacak("diagnosa_mulai", {});
+  setTimeout(function () {
+    if (keadaan.indeks < MESIN.PERNYATAAN.length - 1) {
+      keadaan.indeks++;
+      if (keadaan.indeks === KONFIG.ambilDataSetelah && !keadaan.data.nama && !keadaan.gerbangLewat) {
+        tampilkan("layarData");
+        lacak("diagnosa_dilihat", { lawan: "gerbang-data" });
+        return;
+      }
+      gambarPernyataan();
+      tampilkan("layarTanya");
+    } else {
+      if (!keadaan.data.nama && !keadaan.gerbangLewat) {
+        keadaan.gerbangLewat = true;
+        tampilkan("layarData");
+        lacak("diagnosa_dilihat", { lawan: "gerbang-data-akhir" });
+        return;
+      }
+      tampilkanHasil();
+    }
+  }, 180);
+}
+
+function lanjutDariData() {
+  var nama = el("fNama").value.trim();
+  var wa = el("fWa").value.replace(/[^0-9+]/g, "");
+  var pesan = el("pesanData");
+  if (nama.length < 2) { pesan.textContent = "Nama perlu diisi supaya hasilnya bisa dibahas."; el("fNama").focus(); return; }
+  if (wa.replace(/\D/g, "").length < 9) { pesan.textContent = "Nomor WhatsApp perlu diisi dengan benar, minimal 9 angka."; el("fWa").focus(); return; }
+  keadaan.data = { nama: nama, wa: wa, perusahaan: el("fPerusahaan").value.trim(), jumlah: el("fJumlah").value.trim() };
+  keadaan.gerbangLewat = true;
+  simpan();
+  lacak("diagnosa_gerbang", { jumlah_tim: keadaan.data.jumlah || "tidak diisi" });
+  kirimKalauAda();
+  tampilkan("layarTanya");
+  gambarPernyataan();
+}
+
+function kirimKalauAda() {
+  if (!KONFIG.endpointKirim || uji) return;
+  try {
+    var isi = Object.assign({}, keadaan.data, { jawaban: keadaan.jawaban, sumber: "diagnosa-tim" });
+    if (navigator.sendBeacon) navigator.sendBeacon(KONFIG.endpointKirim, new Blob([JSON.stringify(isi)], { type: "application/json" }));
+    else fetch(KONFIG.endpointKirim, { method: "POST", body: JSON.stringify(isi), keepalive: true });
+  } catch (e) {}
+}
+
+function tampilkanHasil() {
+  var jawaban = MESIN.PERNYATAAN.map(function (b, i) { return keadaan.jawaban[i] || 3; });
+  var hasil = MESIN.hitung(jawaban);
+  keadaan.selesai = true;
+  keadaan.hasil = hasil;
+  simpan();
+  el("skorTotal").textContent = hasil.total;
+  el("pitaSkor").textContent = hasil.pita.nama;
+  el("pitaSkor").style.background = hasil.pita.warna;
+  el("artiPita").textContent = hasil.pita.arti;
+
+  var kotak = el("daftarDimensi"); kotak.innerHTML = "";
+  hasil.dimensi.slice().sort(function (a, b) { return b.skor - a.skor; }).forEach(function (d) {
+    var baris = document.createElement("div");
+    baris.className = "baris";
+    baris.innerHTML = '<div class="atas"><span>' + d.nama + '</span><b>' + d.skor + '</b></div>' +
+                      '<div class="bar"><i style="width:' + d.skor + '%;background:' + MESIN.pitaUntuk(d.skor).warna + '"></i></div>';
+    kotak.appendChild(baris);
+  });
+
+  var tk = el("daftarTemuan"); tk.innerHTML = "";
+  if (hasil.temuan.length === 0) {
+    var baik = document.createElement("div");
+    baik.className = "catatan";
+    baik.style.background = "#EEF8F3"; baik.style.borderColor = "#C7E6D7";
+    baik.innerHTML = "<b>Tidak ada penghambat besar yang terdeteksi.</b><br>Fondasi tim sudah bekerja. Yang berikutnya adalah menjaga ritme dan mengukurnya kembali dalam satu kuartal.";
+    tk.appendChild(baik);
+  }
+  hasil.temuan.forEach(function (t, i) {
+    var k = document.createElement("div");
+    k.className = "temuan";
+    k.innerHTML = "<h3>" + (i + 1) + ". " + t.nama + " (" + t.skor + " dari 100)</h3>" +
+                  "<p>" + t.pesan + "</p>" +
+                  '<p class="butir">' + MESIN.kalimatTemuan(t) + "</p>" +
+                  '<div class="tindakan"><b>Langkah yang biasanya berhasil:</b> ' + t.tindakan + "</div>";
+    tk.appendChild(k);
+  });
+
+  var cs = el("catatanSeragam");
+  if (hasil.seragam) {
+    cs.className = "catatan";
+    cs.innerHTML = "<b>Catatan pembacaan.</b> Jawaban terlihat seragam di semua bagian. Kalau memang demikian keadaannya, rapor ini tetap sah. Kalau tadi ada pernyataan yang kurang pas, ulangi bagian itu supaya temuannya lebih tajam.";
+  } else {
+    cs.className = "catatan sembunyi";
+  }
+
+  el("btnWa").onclick = function () {
+    lacak("diagnosa_klik_jadwal", { skor: String(hasil.total) });
+    var teks = MESIN.ringkasUntukWa(hasil, keadaan.data);
+    window.open("https://wa.me/" + KONFIG.nomorWa + "?text=" + encodeURIComponent(teks), "_blank");
+  };
+  el("btnSalin").onclick = function () {
+    var baris = ["Diagnosa Tim mandiri — Mitologi Inspira",
+                 "Skor total " + hasil.total + " dari 100 (" + hasil.pita.nama + ")"];
+    hasil.dimensi.forEach(function (d) { baris.push("- " + d.nama + ": " + d.skor); });
+    hasil.temuan.forEach(function (t) { baris.push("Temuan: " + t.nama + " — " + t.pesan + " Langkah: " + t.tindakan); });
+    var teks = baris.join("\n");
+    if (navigator.clipboard) navigator.clipboard.writeText(teks);
+    el("btnSalin").textContent = "Ringkasan tersalin";
+  };
+  el("btnUlang").onclick = function () {
+    try { localStorage.removeItem(KUNCI_SIMPAN); } catch (e) {}
+    keadaan = { jawaban: [], indeks: 0, data: {}, selesai: false };
+    tampilkan("layarBuka");
+    gambarJalur();
+  };
+
+  el("pesanKirim").textContent = KONFIG.endpointKirim
+    ? "Hasil sudah tercatat dan akan dibahas bersama tim kami."
+    : "Kirim hasil lewat WhatsApp supaya bisa dijadwalkan sesi pembahasannya.";
+  tampilkan("layarHasil");
+  lacak("diagnosa_selesai", { skor: String(hasil.total), pita: hasil.pita.nama,
+                              jumlah_temuan: String(hasil.temuan.length), seragam: String(hasil.seragam) });
+}
+
+/* ---------- awal ---------- */
+(function mulaiAwal() {
+  if (!window.MESIN) { el("kepalaKet").textContent = "Mesin diagnosa tidak termuat. Muat ulang halaman."; return; }
+  pulihkan();
+  el("btnMulai").onclick = function () { tampilkan("layarTanya"); gambarPernyataan(); lacak("diagnosa_dilihat", { lawan: "pembuka" }); };
+  el("btnKembali").onclick = function () {
+    if (keadaan.indeks > 0) { keadaan.indeks--; gambarPernyataan(); }
+  };
+  el("btnLanjutData").onclick = lanjutDariData;
+  el("fWa").addEventListener("input", function () { el("pesanData").textContent = "Data hanya dipakai untuk membahas hasil tim ini. Tidak dibagikan ke pihak lain."; });
+  document.addEventListener("keydown", function (e) {
+    if (!el("layarTanya").classList.contains("sembunyi") && e.key >= "1" && e.key <= "5") pilih(Number(e.key));
+  });
+  gambarJalur();
+  if (keadaan.selesai && keadaan.jawaban.length === MESIN.PERNYATAAN.length) {
+    keadaan.hasil = null; tampilkanHasil();
+  } else if (keadaan.jawaban.length) {
+    keadaan.indeks = Math.min(keadaan.jawaban.length, MESIN.PERNYATAAN.length - 1);
+    tampilkan("layarTanya"); gambarPernyataan();
+  }
+})();
+</script>
+</body>
+</html>
