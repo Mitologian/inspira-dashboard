@@ -5,21 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diagnosa Tim mandiri — Mitologi Inspira</title>
 <meta name="description" content="Sepuluh pernyataan, tiga menit, tanpa biaya. Rapor singkat lima lapis keselarasan tim, lalu satu langkah berikutnya.">
-<!-- Font sama dengan situs utama. Saat dipasang di situs, baris ini dihapus karena Elementor sudah memuatnya. -->
+<!-- Font dan gambar sama dengan situs utama. Saat dipasang di mitologiinspira.com, baris font ini dihapus
+     karena Elementor sudah memuatnya. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --aksen: #F28A1F;      /* warna tombol situs */
+    --aksen: #F28A1F;        /* warna tombol situs */
     --aksen-tua: #D97A12;
-    --wa: #1D9E75;         /* hijau yang dipakai situs */
-    --tinta: #101010;      /* judul */
-    --teks: #323232;       /* badan */
-    --teks-2: #565656;     /* keterangan */
+    --wa: #1D9E75;
+    --tinta: #101010;
+    --teks: #323232;
+    --teks-2: #565656;
     --garis: #E5E5E5;
     --latar: #F9F9F9;
     --putih: #FFFFFF;
+    --gelap: #131313;
+    --gelap-2: #1E1E1E;
     --radius-tombol: 6px;
     --radius-kartu: 10px;
   }
@@ -30,26 +33,26 @@
     font-weight: 400; background: var(--putih); color: var(--teks); line-height: 1.6;
     -webkit-text-size-adjust: 100%;
   }
-  h1, h2, h3, .tombol, .nilai, .merek, .pita, .tanda-lapis {
+  h1, h2, h3, .tombol, .nilai, .merek, .pita, .tanda-lapis, .chip {
     font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   }
-  .kepala { border-bottom: 1px solid var(--garis); background: var(--putih); }
-  .kepala .isi { max-width: 680px; margin: 0 auto; padding: 26px 20px 22px; }
-  .merek { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--aksen); font-weight: 600; margin: 0 0 8px; }
-  h1 { font-size: 27px; line-height: 1.25; margin: 0; font-weight: 700; color: var(--tinta); }
-  .kepala p { margin: 10px 0 0; color: var(--teks-2); font-size: 15px; }
+
+  /* ---------- ponsel dulu ---------- */
+  .kepala { border-bottom: 1px solid var(--garis); background: var(--putih); position: sticky; top: 0; z-index: 5; }
+  .kepala .isi { padding: 14px 20px 13px; display: flex; align-items: center; gap: 12px; }
+  .kepala img { height: 34px; width: auto; display: block; }
+  .kepala h1 { font-size: 18px; line-height: 1.25; margin: 0; font-weight: 700; color: var(--tinta); }
   .jalur { height: 3px; background: var(--garis); }
   .jalur > i { display: block; height: 100%; width: 0; background: var(--aksen); transition: width .25s ease; }
-  .bungkus { max-width: 680px; margin: 0 auto; padding: 22px 20px 56px; }
-  .kartu { background: var(--putih); border: 1px solid var(--garis); border-radius: var(--radius-kartu); padding: 22px; margin-top: 18px; }
-  .kartu.abu { background: var(--latar); }
+  .bungkus { padding: 20px 20px 52px; }
+  .kartu { background: var(--putih); border: 1px solid var(--garis); border-radius: var(--radius-kartu); padding: 22px; margin-top: 16px; }
   .kartu h2 { font-size: 19px; margin: 0 0 10px; color: var(--tinta); font-weight: 600; }
   .kartu p { margin: 0 0 12px; font-size: 15.5px; }
   .kartu p.kecil, .kecil { font-size: 14px; color: var(--teks-2); }
   ul.ringkas { margin: 0 0 8px; padding-left: 20px; font-size: 15.5px; }
   ul.ringkas li { margin-bottom: 7px; }
-  .sumber { display: inline-block; background: var(--latar); border: 1px solid var(--garis); border-radius: 999px;
-            padding: 5px 12px; font-size: 13px; color: var(--teks-2); margin-bottom: 12px; }
+  .chip { display: inline-block; background: var(--latar); border: 1px solid var(--garis); border-radius: 999px;
+          padding: 5px 12px; font-size: 13px; color: var(--teks-2); margin-bottom: 12px; font-weight: 500; }
   .tombol { display: block; width: 100%; border: 0; border-radius: var(--radius-tombol); padding: 15px 18px;
             font-size: 16px; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; }
   .tombol-utama { background: var(--aksen); color: #fff; }
@@ -91,79 +94,133 @@
   .catatan { background: #FFF8E8; border: 1px solid #F0E0BC; border-radius: var(--radius-kartu); padding: 13px 15px; font-size: 14.5px; margin-top: 16px; }
   .kaki { text-align: center; font-size: 13px; color: var(--teks-2); margin-top: 24px; }
   .sembunyi { display: none !important; }
+  .panel { display: none; }   /* panel samping hanya untuk layar lebar */
+
+  /* ---------- layar lebar: dua kolom, panel kiri mengunci ---------- */
+  @media (min-width: 1024px) {
+    .kepala, .jalur-atas { display: none; }
+    .halaman { display: grid; grid-template-columns: minmax(360px, 42%) 1fr; min-height: 100vh; }
+    .panel {
+      display: flex; align-items: center; position: sticky; top: 0; height: 100vh; overflow: hidden;
+      background: var(--gelap); color: #fff;
+    }
+    .panel::after {
+      content: ""; position: absolute; inset: 0;
+      background:
+        radial-gradient(120% 90% at 12% 8%, rgba(242,138,31,.28), transparent 55%),
+        radial-gradient(90% 70% at 100% 100%, rgba(29,158,117,.18), transparent 60%);
+      pointer-events: none;
+    }
+    .panel-isi { position: relative; z-index: 1; padding: 48px 40px; width: 100%; max-width: 520px; margin-left: auto; }
+    .logo-chip { display: inline-block; background: #fff; border-radius: 8px; padding: 12px 16px; margin-bottom: 22px; }
+    .logo-chip img { display: block; height: 38px; width: auto; }
+    .panel h1 { font-size: 36px; line-height: 1.18; margin: 0 0 14px; font-weight: 700; color: #fff; }
+    .panel .sumber { color: #C9C9C9; }
+    .panel .chip { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.18); color: #E6E6E6; margin-bottom: 0; }
+    .panel .keterangan { font-size: 15.5px; color: #C4C4C4; margin: 20px 0 0; max-width: 420px; }
+    .panel figure { margin: 26px 0 0; max-width: 420px; }
+    .panel figure img { width: 100%; height: 168px; object-fit: cover; object-position: 50% 32%; border-radius: 10px; display: block; }
+    .panel figcaption { font-size: 12.5px; color: #9A9A9A; margin-top: 8px; }
+    .panel .panel-kaki { font-size: 13px; color: #8C8C8C; margin: 26px 0 0; }
+    .utama { display: flex; flex-direction: column; justify-content: center; padding: 40px 0; min-height: 100vh; }
+    .utama .jalur { max-width: 720px; margin: 0 auto; width: 100%; }
+    .bungkus { max-width: 720px; margin: 0 auto; width: 100%; padding: 26px 40px 40px; }
+    .kartu { padding: 28px 30px; }
+    .pernyataan { font-size: 22px; }
+  }
 </style>
 </head>
 <body>
 
-<div class="kepala">
+<!-- Ponsel: logo di sisi kiri judul -->
+<header class="kepala">
   <div class="isi">
-    <p class="merek">Mitologi Inspira</p>
+    <img src="https://mitologiinspira.com/wp-content/uploads/2026/09/logo-header-214x80-1.png" alt="Mitologi Inspira" width="214" height="80">
     <h1>Diagnosa Tim mandiri</h1>
-    <p id="kepalaKet">Sepuluh pernyataan tentang cara tim bekerja. Tiga menit, tanpa biaya, hasilnya langsung.</p>
   </div>
-</div>
-<div class="jalur"><i id="jalurIsi"></i></div>
+</header>
 
-<div class="bungkus">
+<div class="halaman">
 
-  <!-- Layar 1: pembuka -->
-  <section id="layarBuka" class="kartu">
-    <span class="sumber">Berbasis kerangka OAM lima lapis milik Ansaka</span>
-    <h2>Sebelum mulai</h2>
-    <ul class="ringkas">
-      <li>Sepuluh pernyataan, dinilai 1 sampai 5 sesuai keadaan tim saat ini.</li>
-      <li>Jawaban paling jujur memberi hasil paling berguna. Tidak ada jawaban benar atau salah.</li>
-      <li>Rapor berisi skor lima lapis keselarasan, dua lapis yang paling menghambat, dan satu langkah berikutnya.</li>
-      <li>Datang dari satu orang sudah cukup untuk melihat pola. Lebih dari satu orang memberi gambaran yang lebih tajam.</li>
-    </ul>
-    <p class="kecil">Jawaban tidak ditampilkan ke anggota tim dan tidak dipakai untuk menilai siapa pun.</p>
-    <button class="tombol tombol-utama" id="btnMulai">Mulai, sekitar 3 menit</button>
-  </section>
-
-  <!-- Layar 2: pernyataan -->
-  <section id="layarTanya" class="kartu sembunyi">
-    <p class="hitung" id="penghitung">Pernyataan 1 dari 10</p>
-    <p class="pernyataan" id="teksPernyataan"></p>
-    <div class="pilihan" id="pilihan"></div>
-    <div class="sebelah">
-      <button class="tombol tombol-samar" id="btnKembali">Kembali</button>
+  <!-- Layar lebar: panel kiri yang mengunci -->
+  <aside class="panel">
+    <div class="panel-isi">
+      <span class="logo-chip"><img src="https://mitologiinspira.com/wp-content/uploads/2026/09/logo-header-214x80-1.png" alt="Mitologi Inspira" width="214" height="80"></span>
+      <h1>Diagnosa Tim mandiri</h1>
+      <span class="chip">Berbasis kerangka OAM lima lapis milik Ansaka</span>
+      <p class="keterangan">Sepuluh pernyataan tentang cara tim bekerja. Tiga menit, tanpa biaya, dan rapornya langsung terbaca.</p>
+      <figure>
+        <img src="https://mitologiinspira.com/wp-content/uploads/2026/09/Applied-MBTI-Official-Training-with-Mitologi-Inspira-sRBG.webp" alt="Sesi Applied MBTI bersama peserta dari sebuah perusahaan" width="1920" height="930">
+        <figcaption>Salah satu sesi Applied MBTI kami. Nama peserta tidak ditampilkan di halaman ini.</figcaption>
+      </figure>
+      <p class="panel-kaki">Mitologi Inspira · konsultan pengembangan tim dan pengalaman belajar</p>
     </div>
-  </section>
+  </aside>
 
-  <!-- Layar 3: gerbang data, muncul setelah pernyataan keenam -->
-  <section id="layarData" class="kartu sembunyi">
-    <h2>Hampir selesai</h2>
-    <p>Rapornya sudah dihitung. Isi empat hal ini supaya hasilnya bisa dibahas dan dikirim.</p>
-    <div class="bidang"><label for="fNama">Nama</label><input id="fNama" type="text" autocomplete="name" placeholder="Nama panggilan"></div>
-    <div class="bidang"><label for="fWa">Nomor WhatsApp</label><input id="fWa" type="tel" inputmode="tel" autocomplete="tel" placeholder="08xx xxxx xxxx"></div>
-    <div class="bidang"><label for="fPerusahaan">Perusahaan atau lembaga</label><input id="fPerusahaan" type="text" autocomplete="organization" placeholder="Nama perusahaan"></div>
-    <div class="bidang"><label for="fJumlah">Perkiraan jumlah anggota tim</label><input id="fJumlah" type="text" inputmode="numeric" placeholder="misal 25"></div>
-    <p class="kecil" id="pesanData">Data hanya dipakai untuk membahas hasil tim ini. Tidak dibagikan ke pihak lain.</p>
-    <button class="tombol tombol-utama" id="btnLanjutData">Lanjut ke pernyataan berikutnya</button>
-  </section>
+  <main class="utama">
+    <div class="jalur"><i id="jalurIsi"></i></div>
+    <div class="bungkus">
 
-  <!-- Layar 4: rapor -->
-  <section id="layarHasil" class="kartu sembunyi">
-    <p class="hitung">Rapor diagnosa tim</p>
-    <p class="nilai" id="skorTotal">0</p>
-    <p class="dari">dari 100, lima lapis keselarasan</p>
-    <div class="pita" id="pitaSkor">—</div>
-    <p id="artiPita" style="margin-top:12px"></p>
-    <div id="daftarDimensi"></div>
-    <div id="jalurKata" class="jalur-kata sembunyi"></div>
-    <div id="daftarTemuan"></div>
-    <div id="catatanSeragam" class="catatan sembunyi"></div>
-    <h2 style="margin-top:24px">Langkah berikutnya</h2>
-    <p>Sesi 45 menit tanpa biaya untuk membahas rapor ini bersama satu fasilitator kami. Yang dibahas bukan penilaian, melainkan lapis terlemah yang muncul di rapor dan cara menanganinya.</p>
-    <button class="tombol tombol-wa" id="btnWa">Bahas hasil ini lewat WhatsApp</button>
-    <button class="tombol tombol-samar" id="btnSalin" style="margin-top:10px">Salin ringkasan hasil</button>
-    <div class="sebelah">
-      <button class="tombol tombol-samar" id="btnUlang">Mulai dari awal</button>
+      <!-- Layar 1: pembuka -->
+      <section id="layarBuka" class="kartu">
+        <span class="chip">Berbasis kerangka OAM lima lapis milik Ansaka</span>
+        <h2>Sebelum mulai</h2>
+        <ul class="ringkas">
+          <li>Sepuluh pernyataan, dinilai 1 sampai 5 sesuai keadaan tim saat ini.</li>
+          <li>Jawaban paling jujur memberi hasil paling berguna. Tidak ada jawaban benar atau salah.</li>
+          <li>Rapor berisi skor lima lapis keselarasan, dua lapis yang paling menghambat, dan satu langkah berikutnya.</li>
+          <li>Datang dari satu orang sudah cukup untuk melihat pola. Lebih dari satu orang memberi gambaran yang lebih tajam.</li>
+        </ul>
+        <p class="kecil">Jawaban tidak ditampilkan ke anggota tim dan tidak dipakai untuk menilai siapa pun.</p>
+        <button class="tombol tombol-utama" id="btnMulai">Mulai, sekitar 3 menit</button>
+      </section>
+
+      <!-- Layar 2: pernyataan -->
+      <section id="layarTanya" class="kartu sembunyi">
+        <p class="hitung" id="penghitung">Pernyataan 1 dari 10</p>
+        <p class="pernyataan" id="teksPernyataan"></p>
+        <div class="pilihan" id="pilihan"></div>
+        <div class="sebelah">
+          <button class="tombol tombol-samar" id="btnKembali">Kembali</button>
+        </div>
+      </section>
+
+      <!-- Layar 3: gerbang data, muncul setelah pernyataan keenam -->
+      <section id="layarData" class="kartu sembunyi">
+        <h2>Hampir selesai</h2>
+        <p>Rapornya sudah dihitung. Isi empat hal ini supaya hasilnya bisa dibahas dan dikirim.</p>
+        <div class="bidang"><label for="fNama">Nama</label><input id="fNama" type="text" autocomplete="name" placeholder="Nama panggilan"></div>
+        <div class="bidang"><label for="fWa">Nomor WhatsApp</label><input id="fWa" type="tel" inputmode="tel" autocomplete="tel" placeholder="08xx xxxx xxxx"></div>
+        <div class="bidang"><label for="fPerusahaan">Perusahaan atau lembaga</label><input id="fPerusahaan" type="text" autocomplete="organization" placeholder="Nama perusahaan"></div>
+        <div class="bidang"><label for="fJumlah">Perkiraan jumlah anggota tim</label><input id="fJumlah" type="text" inputmode="numeric" placeholder="misal 25"></div>
+        <p class="kecil" id="pesanData">Data hanya dipakai untuk membahas hasil tim ini. Tidak dibagikan ke pihak lain.</p>
+        <button class="tombol tombol-utama" id="btnLanjutData">Lanjut ke pernyataan berikutnya</button>
+      </section>
+
+      <!-- Layar 4: rapor -->
+      <section id="layarHasil" class="kartu sembunyi">
+        <p class="hitung">Rapor diagnosa tim</p>
+        <p class="nilai" id="skorTotal">0</p>
+        <p class="dari">dari 100, lima lapis keselarasan</p>
+        <div class="pita" id="pitaSkor">—</div>
+        <p id="artiPita" style="margin-top:12px"></p>
+        <div id="daftarDimensi"></div>
+        <div id="jalurKata" class="jalur-kata sembunyi"></div>
+        <div id="daftarTemuan"></div>
+        <div id="catatanSeragam" class="catatan sembunyi"></div>
+        <h2 style="margin-top:24px">Langkah berikutnya</h2>
+        <p>Sesi 45 menit tanpa biaya untuk membahas rapor ini bersama satu fasilitator kami. Yang dibahas bukan penilaian, melainkan lapis terlemah yang muncul di rapor dan cara menanganinya.</p>
+        <button class="tombol tombol-wa" id="btnWa">Bahas hasil ini lewat WhatsApp</button>
+        <button class="tombol tombol-samar" id="btnSalin" style="margin-top:10px">Salin ringkasan hasil</button>
+        <div class="sebelah">
+          <button class="tombol tombol-samar" id="btnUlang">Mulai dari awal</button>
+        </div>
+        <p class="kecil" id="pesanKirim" style="margin-top:14px"></p>
+      </section>
+
+      <p class="kaki">Mitologi Inspira · konsultan pengembangan tim dan pengalaman belajar</p>
     </div>
-    <p class="kecil" id="pesanKirim" style="margin-top:14px"></p>
-  </section>
-
-  <p class="kaki">Mitologi Inspira · konsultan pengembangan tim dan pengalaman belajar</p>
+  </main>
 </div>
 
 <script src="mesin.js"></script>
@@ -392,7 +449,7 @@ function tampilkanHasil() {
 
 /* ---------- awal ---------- */
 (function mulaiAwal() {
-  if (!window.MESIN) { el("kepalaKet").textContent = "Mesin diagnosa tidak termuat. Muat ulang halaman."; return; }
+  if (!window.MESIN) { document.body.insertAdjacentHTML("afterbegin", '<p style="padding:20px">Mesin diagnosa tidak termuat. Muat ulang halaman.</p>'); return; }
   pulihkan();
   el("btnMulai").onclick = function () { tampilkan("layarTanya"); gambarPernyataan(); lacak("diagnosa_dilihat", { lawan: "pembuka" }); };
   el("btnKembali").onclick = function () {
