@@ -4,77 +4,92 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diagnosa Tim mandiri — Mitologi Inspira</title>
-<meta name="description" content="Sepuluh pernyataan, tiga menit, tanpa biaya. Dapatkan rapor singkat tentang lima fondasi kerja tim, lalu satu langkah berikutnya.">
+<meta name="description" content="Sepuluh pernyataan, tiga menit, tanpa biaya. Rapor singkat lima lapis keselarasan tim, lalu satu langkah berikutnya.">
+<!-- Font sama dengan situs utama. Saat dipasang di situs, baris ini dihapus karena Elementor sudah memuatnya. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #0F1D4A; --navy-2: #17285E; --emas: #C9A44C; --tinta: #16203C;
-    --abu: #6B7488; --garis: #E2E6EF; --putih: #FFFFFF; --latar: #F6F7FB;
+    --aksen: #F28A1F;      /* warna tombol situs */
+    --aksen-tua: #D97A12;
+    --wa: #1D9E75;         /* hijau yang dipakai situs */
+    --tinta: #101010;      /* judul */
+    --teks: #323232;       /* badan */
+    --teks-2: #565656;     /* keterangan */
+    --garis: #E5E5E5;
+    --latar: #F9F9F9;
+    --putih: #FFFFFF;
+    --radius-tombol: 6px;
+    --radius-kartu: 10px;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: var(--latar); color: var(--tinta); line-height: 1.55;
+    font-family: "Albert Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 400; background: var(--putih); color: var(--teks); line-height: 1.6;
     -webkit-text-size-adjust: 100%;
   }
-  .bungkus { max-width: 620px; margin: 0 auto; padding: 20px 18px 48px; }
-  .kepala { background: var(--navy); color: #fff; padding: 22px 18px 20px; }
-  .kepala .isi { max-width: 620px; margin: 0 auto; }
-  .merek { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #C9A44C; margin: 0 0 6px; }
-  h1 { font-size: 24px; line-height: 1.25; margin: 0; font-weight: 650; }
-  .kepala p { margin: 10px 0 0; color: #C7CEE3; font-size: 14.5px; }
-  .jalur { height: 4px; background: #24356B; }
-  .jalur > i { display: block; height: 100%; width: 0; background: var(--emas); transition: width .25s ease; }
-  .kartu { background: var(--putih); border: 1px solid var(--garis); border-radius: 14px; padding: 20px; margin-top: 18px; }
-  .kartu h2 { font-size: 18px; margin: 0 0 10px; }
-  .kartu p { margin: 0 0 12px; font-size: 15px; }
-  .kartu p.kecil { font-size: 13.5px; color: var(--abu); }
-  ul.ringkas { margin: 0 0 6px; padding-left: 20px; font-size: 15px; }
-  ul.ringkas li { margin-bottom: 6px; }
-  .tombol {
-    display: block; width: 100%; border: 0; border-radius: 11px; padding: 15px 18px;
-    font-size: 16px; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none;
+  h1, h2, h3, .tombol, .nilai, .merek, .pita, .tanda-lapis {
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   }
-  .tombol-utama { background: var(--navy); color: #fff; }
-  .tombol-utama:active { background: var(--navy-2); }
-  .tombol-wa { background: #1F9D6B; color: #fff; }
-  .tombol-samar { background: transparent; color: var(--abu); border: 1px solid var(--garis); font-weight: 500; font-size: 14.5px; padding: 12px; }
+  .kepala { border-bottom: 1px solid var(--garis); background: var(--putih); }
+  .kepala .isi { max-width: 680px; margin: 0 auto; padding: 26px 20px 22px; }
+  .merek { font-size: 12.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--aksen); font-weight: 600; margin: 0 0 8px; }
+  h1 { font-size: 27px; line-height: 1.25; margin: 0; font-weight: 700; color: var(--tinta); }
+  .kepala p { margin: 10px 0 0; color: var(--teks-2); font-size: 15px; }
+  .jalur { height: 3px; background: var(--garis); }
+  .jalur > i { display: block; height: 100%; width: 0; background: var(--aksen); transition: width .25s ease; }
+  .bungkus { max-width: 680px; margin: 0 auto; padding: 22px 20px 56px; }
+  .kartu { background: var(--putih); border: 1px solid var(--garis); border-radius: var(--radius-kartu); padding: 22px; margin-top: 18px; }
+  .kartu.abu { background: var(--latar); }
+  .kartu h2 { font-size: 19px; margin: 0 0 10px; color: var(--tinta); font-weight: 600; }
+  .kartu p { margin: 0 0 12px; font-size: 15.5px; }
+  .kartu p.kecil, .kecil { font-size: 14px; color: var(--teks-2); }
+  ul.ringkas { margin: 0 0 8px; padding-left: 20px; font-size: 15.5px; }
+  ul.ringkas li { margin-bottom: 7px; }
+  .sumber { display: inline-block; background: var(--latar); border: 1px solid var(--garis); border-radius: 999px;
+            padding: 5px 12px; font-size: 13px; color: var(--teks-2); margin-bottom: 12px; }
+  .tombol { display: block; width: 100%; border: 0; border-radius: var(--radius-tombol); padding: 15px 18px;
+            font-size: 16px; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; }
+  .tombol-utama { background: var(--aksen); color: #fff; }
+  .tombol-utama:active { background: var(--aksen-tua); }
+  .tombol-wa { background: var(--wa); color: #fff; }
+  .tombol-samar { background: var(--putih); color: var(--teks-2); border: 1px solid var(--garis); font-weight: 500; font-size: 15px; padding: 13px; }
   .tombol[disabled] { opacity: .45; cursor: not-allowed; }
-  .sebelah { display: flex; gap: 10px; margin-top: 14px; }
+  .sebelah { display: flex; gap: 10px; margin-top: 12px; }
   .sebelah .tombol { margin: 0; }
-  .hitung { font-size: 13px; color: var(--abu); margin: 0 0 10px; }
-  .pernyataan { font-size: 19px; line-height: 1.4; margin: 0 0 18px; font-weight: 600; }
+  .hitung { font-size: 13.5px; color: var(--teks-2); margin: 0 0 10px; font-weight: 500; }
+  .pernyataan { font-family: "Plus Jakarta Sans", sans-serif; font-size: 20px; line-height: 1.4; margin: 0 0 18px; font-weight: 600; color: var(--tinta); }
   .pilihan { display: grid; gap: 9px; }
-  .pilihan button {
-    text-align: left; border: 1px solid var(--garis); background: #fff; border-radius: 11px;
-    padding: 13px 15px; font-size: 15px; cursor: pointer; color: var(--tinta); font-family: inherit;
-  }
-  .pilihan button span { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center;
-    border-radius: 50%; background: #EEF1F8; color: var(--navy); font-size: 12.5px; font-weight: 700; margin-right: 9px; }
-  .pilihan button.dipilih { border-color: var(--navy); background: #F1F4FC; }
-  .pilihan button.dipilih span { background: var(--navy); color: #fff; }
-  label { display: block; font-size: 14px; font-weight: 600; margin: 0 0 6px; }
-  input {
-    width: 100%; border: 1px solid var(--garis); border-radius: 10px; padding: 13px 14px;
-    font-size: 16px; font-family: inherit; color: var(--tinta); background: #fff;
-  }
-  input:focus { outline: 2px solid #C9D3EE; border-color: var(--navy); }
+  .pilihan button { text-align: left; border: 1px solid var(--garis); background: var(--putih); border-radius: var(--radius-tombol);
+    padding: 13px 15px; font-size: 15.5px; font-family: inherit; cursor: pointer; color: var(--teks); }
+  .pilihan button span { display: inline-block; width: 22px; height: 22px; line-height: 22px; text-align: center; border-radius: 50%;
+    background: var(--latar); color: var(--teks-2); font-size: 12.5px; font-weight: 600; margin-right: 9px; }
+  .pilihan button.dipilih { border-color: var(--aksen); background: #FEF6EC; }
+  .pilihan button.dipilih span { background: var(--aksen); color: #fff; }
+  label { display: block; font-size: 14.5px; font-weight: 600; margin: 0 0 6px; color: var(--tinta); }
+  input { width: 100%; border: 1px solid var(--garis); border-radius: var(--radius-tombol); padding: 13px 14px;
+    font-size: 16px; font-family: inherit; color: var(--teks); background: var(--putih); }
+  input:focus { outline: 2px solid #FBE0C0; border-color: var(--aksen); }
   .bidang { margin-bottom: 14px; }
-  .nilai { font-size: 54px; font-weight: 700; line-height: 1; margin: 0; }
-  .dari { font-size: 15px; color: var(--abu); margin: 6px 0 0; }
-  .pita { display: inline-block; padding: 5px 12px; border-radius: 999px; color: #fff; font-size: 13.5px; font-weight: 600; margin-top: 12px; }
-  .baris { margin-top: 18px; }
-  .baris .atas { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 5px; }
-  .baris .atas b { font-weight: 650; }
-  .bar { height: 9px; border-radius: 999px; background: #EDF0F7; overflow: hidden; }
+  .nilai { font-size: 56px; font-weight: 700; line-height: 1; margin: 0; color: var(--tinta); }
+  .dari { font-size: 15px; color: var(--teks-2); margin: 6px 0 0; }
+  .pita { display: inline-block; padding: 5px 13px; border-radius: 999px; color: #fff; font-size: 13.5px; font-weight: 600; margin-top: 12px; }
+  .baris { margin-top: 16px; }
+  .baris .atas { display: flex; justify-content: space-between; align-items: baseline; font-size: 15px; margin-bottom: 5px; }
+  .baris .atas b { font-family: "Plus Jakarta Sans", sans-serif; font-weight: 600; color: var(--tinta); }
+  .tanda-lapis { font-size: 12px; color: var(--teks-2); font-weight: 500; }
+  .bar { height: 8px; border-radius: 999px; background: #F1F1F1; overflow: hidden; }
   .bar i { display: block; height: 100%; border-radius: 999px; }
-  .temuan { border-left: 3px solid var(--emas); padding: 2px 0 2px 14px; margin: 18px 0; }
-  .temuan h3 { font-size: 16px; margin: 0 0 6px; }
-  .temuan p { font-size: 14.5px; margin: 0 0 8px; }
-  .temuan .butir { font-size: 13.5px; color: var(--abu); font-style: italic; }
-  .temuan .tindakan { font-size: 14.5px; background: #F6F7FB; border-radius: 9px; padding: 11px 13px; margin: 8px 0 0; }
-  .catatan { background: #FFF8E8; border: 1px solid #F0E0BC; border-radius: 10px; padding: 12px 14px; font-size: 14px; margin-top: 16px; }
-  .kaki { text-align: center; font-size: 12.5px; color: var(--abu); margin-top: 22px; }
+  .temuan { border-left: 3px solid var(--aksen); padding: 2px 0 2px 15px; margin: 20px 0 0; }
+  .temuan h3 { font-size: 16.5px; margin: 0 0 7px; color: var(--tinta); font-weight: 600; }
+  .temuan p { font-size: 15px; margin: 0 0 8px; }
+  .temuan .butir { font-size: 14px; color: var(--teks-2); font-style: italic; }
+  .temuan .tindakan { font-size: 15px; background: var(--latar); border-radius: var(--radius-tombol); padding: 12px 14px; margin: 9px 0 0; }
+  .jalur-kata { background: #FEF6EC; border: 1px solid #F7DCB7; border-radius: var(--radius-kartu); padding: 14px 16px; margin-top: 20px; font-size: 15px; }
+  .catatan { background: #FFF8E8; border: 1px solid #F0E0BC; border-radius: var(--radius-kartu); padding: 13px 15px; font-size: 14.5px; margin-top: 16px; }
+  .kaki { text-align: center; font-size: 13px; color: var(--teks-2); margin-top: 24px; }
   .sembunyi { display: none !important; }
 </style>
 </head>
@@ -93,12 +108,13 @@
 
   <!-- Layar 1: pembuka -->
   <section id="layarBuka" class="kartu">
+    <span class="sumber">Berbasis kerangka OAM lima lapis milik Ansaka</span>
     <h2>Sebelum mulai</h2>
     <ul class="ringkas">
       <li>Sepuluh pernyataan, dinilai 1 sampai 5 sesuai keadaan tim saat ini.</li>
       <li>Jawaban paling jujur memberi hasil paling berguna. Tidak ada jawaban benar atau salah.</li>
-      <li>Rapor berisi skor lima fondasi kerja tim, dua hal yang paling menghambat, dan satu langkah berikutnya.</li>
-      <li>Datang dari satu orang saja sudah cukup untuk melihat pola. Lebih dari satu orang memberi gambaran yang lebih tajam.</li>
+      <li>Rapor berisi skor lima lapis keselarasan, dua lapis yang paling menghambat, dan satu langkah berikutnya.</li>
+      <li>Datang dari satu orang sudah cukup untuk melihat pola. Lebih dari satu orang memberi gambaran yang lebih tajam.</li>
     </ul>
     <p class="kecil">Jawaban tidak ditampilkan ke anggota tim dan tidak dipakai untuk menilai siapa pun.</p>
     <button class="tombol tombol-utama" id="btnMulai">Mulai, sekitar 3 menit</button>
@@ -123,21 +139,22 @@
     <div class="bidang"><label for="fPerusahaan">Perusahaan atau lembaga</label><input id="fPerusahaan" type="text" autocomplete="organization" placeholder="Nama perusahaan"></div>
     <div class="bidang"><label for="fJumlah">Perkiraan jumlah anggota tim</label><input id="fJumlah" type="text" inputmode="numeric" placeholder="misal 25"></div>
     <p class="kecil" id="pesanData">Data hanya dipakai untuk membahas hasil tim ini. Tidak dibagikan ke pihak lain.</p>
-    <button class="tombol tombol-utama" id="btnLanjutData">Lanjut ke dua pernyataan terakhir</button>
+    <button class="tombol tombol-utama" id="btnLanjutData">Lanjut ke pernyataan berikutnya</button>
   </section>
 
   <!-- Layar 4: rapor -->
   <section id="layarHasil" class="kartu sembunyi">
     <p class="hitung">Rapor diagnosa tim</p>
     <p class="nilai" id="skorTotal">0</p>
-    <p class="dari">dari 100</p>
+    <p class="dari">dari 100, lima lapis keselarasan</p>
     <div class="pita" id="pitaSkor">—</div>
     <p id="artiPita" style="margin-top:12px"></p>
     <div id="daftarDimensi"></div>
+    <div id="jalurKata" class="jalur-kata sembunyi"></div>
     <div id="daftarTemuan"></div>
     <div id="catatanSeragam" class="catatan sembunyi"></div>
-    <h2 style="margin-top:22px">Langkah berikutnya</h2>
-    <p>Sesi 45 menit tanpa biaya untuk membahas rapor ini bersama satu fasilitator kami. Yang dibahas bukan penilaian, melainkan dua penghambat yang muncul di rapor dan cara menanganinya.</p>
+    <h2 style="margin-top:24px">Langkah berikutnya</h2>
+    <p>Sesi 45 menit tanpa biaya untuk membahas rapor ini bersama satu fasilitator kami. Yang dibahas bukan penilaian, melainkan lapis terlemah yang muncul di rapor dan cara menanganinya.</p>
     <button class="tombol tombol-wa" id="btnWa">Bahas hasil ini lewat WhatsApp</button>
     <button class="tombol tombol-samar" id="btnSalin" style="margin-top:10px">Salin ringkasan hasil</button>
     <div class="sebelah">
@@ -210,14 +227,14 @@ function tampilkan(id) {
   ["layarBuka", "layarTanya", "layarData", "layarHasil"].forEach(function (x) {
     el(x).classList.toggle("sembunyi", x !== id);
   });
-  window.scrollTo(0, 0);
+  if (window.scrollTo) window.scrollTo(0, 0);
 }
 function gambarJalur() {
   var maju = keadaan.selesai ? 1 : Math.min(keadaan.jawaban.length / MESIN.PERNYATAAN.length, 0.95);
   el("jalurIsi").style.width = Math.round(maju * 100) + "%";
 }
 
-var MESIN = window.MESIN || { /* diisi oleh mesin.js */ };
+var MESIN = window.MESIN || {};
 
 function gambarPernyataan() {
   var i = keadaan.indeks, b = MESIN.PERNYATAAN[i];
@@ -300,26 +317,32 @@ function tampilkanHasil() {
   el("artiPita").textContent = hasil.pita.arti;
 
   var kotak = el("daftarDimensi"); kotak.innerHTML = "";
-  hasil.dimensi.slice().sort(function (a, b) { return b.skor - a.skor; }).forEach(function (d) {
+  hasil.dimensi.slice().sort(function (a, b) { return a.lapis - b.lapis; }).forEach(function (d) {
     var baris = document.createElement("div");
     baris.className = "baris";
-    baris.innerHTML = '<div class="atas"><span>' + d.nama + '</span><b>' + d.skor + '</b></div>' +
+    var tanda = (d.kunci === hasil.terlemah.kunci) ? ' <span class="tanda-lapis">paling lemah</span>' : "";
+    baris.innerHTML = '<div class="atas"><span>' + d.nama +
+                      ' <span class="tanda-lapis">lapis ' + d.lapis + '</span>' + tanda + '</span><b>' + d.skor + '</b></div>' +
                       '<div class="bar"><i style="width:' + d.skor + '%;background:' + MESIN.pitaUntuk(d.skor).warna + '"></i></div>';
     kotak.appendChild(baris);
   });
+
+  var jk = el("jalurKata");
+  jk.className = "jalur-kata";
+  jk.innerHTML = "<b>Arah percakapan.</b> " + MESIN.kalimatJalur(hasil);
 
   var tk = el("daftarTemuan"); tk.innerHTML = "";
   if (hasil.temuan.length === 0) {
     var baik = document.createElement("div");
     baik.className = "catatan";
     baik.style.background = "#EEF8F3"; baik.style.borderColor = "#C7E6D7";
-    baik.innerHTML = "<b>Tidak ada penghambat besar yang terdeteksi.</b><br>Fondasi tim sudah bekerja. Yang berikutnya adalah menjaga ritme dan mengukurnya kembali dalam satu kuartal.";
+    baik.innerHTML = "<b>Tidak ada penghambat besar yang terdeteksi.</b><br>Kelima lapis terbaca cukup baik. Yang berikutnya adalah menjaga ritme dan mengukurnya kembali dalam satu kuartal.";
     tk.appendChild(baik);
   }
   hasil.temuan.forEach(function (t, i) {
     var k = document.createElement("div");
     k.className = "temuan";
-    k.innerHTML = "<h3>" + (i + 1) + ". " + t.nama + " (" + t.skor + " dari 100)</h3>" +
+    k.innerHTML = "<h3>" + (i + 1) + ". " + t.nama + " · lapis " + t.lapis + " (" + t.skor + " dari 100)</h3>" +
                   "<p>" + t.pesan + "</p>" +
                   '<p class="butir">' + MESIN.kalimatTemuan(t) + "</p>" +
                   '<div class="tindakan"><b>Langkah yang biasanya berhasil:</b> ' + t.tindakan + "</div>";
@@ -335,14 +358,17 @@ function tampilkanHasil() {
   }
 
   el("btnWa").onclick = function () {
-    lacak("diagnosa_klik_jadwal", { skor: String(hasil.total) });
+    lacak("diagnosa_klik_jadwal", { skor: String(hasil.total), lapis_terlemah: hasil.terlemah.nama,
+                                    jalur: hasil.terlemah.jalur });
     var teks = MESIN.ringkasUntukWa(hasil, keadaan.data);
     window.open("https://wa.me/" + KONFIG.nomorWa + "?text=" + encodeURIComponent(teks), "_blank");
   };
   el("btnSalin").onclick = function () {
     var baris = ["Diagnosa Tim mandiri — Mitologi Inspira",
-                 "Skor total " + hasil.total + " dari 100 (" + hasil.pita.nama + ")"];
-    hasil.dimensi.forEach(function (d) { baris.push("- " + d.nama + ": " + d.skor); });
+                 "Berbasis lima lapis OAM. Skor total " + hasil.total + " dari 100 (" + hasil.pita.nama + ")"];
+    hasil.dimensi.slice().sort(function (a, b) { return a.lapis - b.lapis; })
+      .forEach(function (d) { baris.push("- Lapis " + d.lapis + " " + d.nama + ": " + d.skor); });
+    baris.push("Lapis terlemah: " + hasil.terlemah.nama + " (jalur " + hasil.terlemah.jalur + ")");
     hasil.temuan.forEach(function (t) { baris.push("Temuan: " + t.nama + " — " + t.pesan + " Langkah: " + t.tindakan); });
     var teks = baris.join("\n");
     if (navigator.clipboard) navigator.clipboard.writeText(teks);
@@ -360,6 +386,7 @@ function tampilkanHasil() {
     : "Kirim hasil lewat WhatsApp supaya bisa dijadwalkan sesi pembahasannya.";
   tampilkan("layarHasil");
   lacak("diagnosa_selesai", { skor: String(hasil.total), pita: hasil.pita.nama,
+                              lapis_terlemah: hasil.terlemah.nama, jalur: hasil.terlemah.jalur,
                               jumlah_temuan: String(hasil.temuan.length), seragam: String(hasil.seragam) });
 }
 
