@@ -377,9 +377,9 @@ function tampilkanHasil() {
   hasil.dimensi.slice().sort(function (a, b) { return a.lapis - b.lapis; }).forEach(function (d) {
     var baris = document.createElement("div");
     baris.className = "baris";
-    var tanda = (d.kunci === hasil.terlemah.kunci) ? ' <span class="tanda-lapis">paling lemah</span>' : "";
+    var tanda = (d.kunci === hasil.terlemah.kunci) ? ' <span class="tanda-lapis">· paling lemah</span>' : "";
     baris.innerHTML = '<div class="atas"><span>' + d.nama +
-                      ' <span class="tanda-lapis">lapis ' + d.lapis + '</span>' + tanda + '</span><b>' + d.skor + '</b></div>' +
+                      ' <span class="tanda-lapis">· lapis ' + d.lapis + '</span>' + tanda + '</span><b>' + d.skor + '</b></div>' +
                       '<div class="bar"><i style="width:' + d.skor + '%;background:' + MESIN.pitaUntuk(d.skor).warna + '"></i></div>';
     kotak.appendChild(baris);
   });
